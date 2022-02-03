@@ -3,11 +3,11 @@ package ru.otus.otuskotlin.dsl
 import kotlin.random.Random
 
 // Simple lambda
+// All in once - https://pl.kotl.in/3YyJVrGSC
+// Print random number
 ////////////////////////////////////////////////////////////////////////////////
+// https://pl.kotl.in/IJwIo0Bpa
 
-/**
- * Print random number
- */
 fun printRandomNumberFoo() {
     val num = Random.nextInt()
 
@@ -22,6 +22,7 @@ val printRandomNumber = {
 
 // Lambda with in arg
 ////////////////////////////////////////////////////////////////////////////////
+// https://pl.kotl.in/gMT3RhMjd
 
 fun printRandomNumberFooWithSeed(seed: Int) {
     val num = Random(seed).nextInt()
@@ -37,6 +38,7 @@ val printRandomNumberWithSeed: (seed: Int) -> Unit = {
 
 // Lambda with in lambda
 ////////////////////////////////////////////////////////////////////////////////
+// https://pl.kotl.in/aljjnDHfN
 
 fun printNumberFromFoo(customFoo: () -> Number) {
     val num = customFoo()

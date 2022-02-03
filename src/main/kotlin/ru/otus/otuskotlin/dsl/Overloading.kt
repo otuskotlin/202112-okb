@@ -2,11 +2,10 @@ package ru.otus.otuskotlin.dsl
 
 
 // Operator overloading
+// All in once - https://pl.kotl.in/dLj7ZjAmU
+// Add simple, clean and usefully methods to point with overloading operator
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Add simple, clean and usefully methods to point with overloading operator
- */
 data class Point(val x: Int, val y: Int) {
     fun sumSimple(another: Point): Point {
         return Point(x + another.x, y + another.y)

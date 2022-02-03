@@ -1,13 +1,10 @@
 package ru.otus.otuskotlin.dsl
 
-import kotlin.random.Random
-
 // Apply
+// All in once - https://pl.kotl.in/MAzgXVKI_
+// Concat multiple strings with StringBuilder, cause of immutable strings
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Concat multiple strings with StringBuilder, cause of immutable strings
- */
 fun concatString() {
     val builder = StringBuilder()
     builder.append("Not")
@@ -23,6 +20,7 @@ fun concatString() {
     println(str)
 }
 
+// https://pl.kotl.in/gnI6pnfU5
 fun concatStringWithApply() {
     val str = StringBuilder().apply {
         append("Very")
@@ -38,6 +36,7 @@ fun concatStringWithApply() {
 // Let
 ////////////////////////////////////////////////////////////////////////////////
 
+// https://pl.kotl.in/wOTKRNsgh
 fun concatStringWithLet() {
     val str = StringBuilder().let {
         it.append("Somewhere")
@@ -56,6 +55,7 @@ fun concatStringWithLet() {
 // Also
 ////////////////////////////////////////////////////////////////////////////////
 
+// https://pl.kotl.in/D2HR-8KDD
 fun concatStringWithAlso() {
     val str = StringBuilder().also {
         it.append("Almost")
@@ -73,6 +73,7 @@ fun concatStringWithAlso() {
 // Run
 ////////////////////////////////////////////////////////////////////////////////
 
+// https://pl.kotl.in/2sz5ALawm
 fun concatStringWithRun() {
     val str = StringBuilder().run {
         append("Very")

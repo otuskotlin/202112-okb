@@ -4,6 +4,12 @@ package ru.otus.otuskotlin.dsl.builder.better
 
 import java.util.*
 
+/**
+ * Better Kotlin-like builder implementation
+ * https://pl.kotl.in/Bh6B9WK7h
+ */
+
+
 enum class Drink {
     WATER,
     COFFEE,

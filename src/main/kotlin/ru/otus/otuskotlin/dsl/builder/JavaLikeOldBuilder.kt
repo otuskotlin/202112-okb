@@ -6,6 +6,7 @@ import java.util.*
 
 /**
  * Old Java-like builder implementation
+ * https://pl.kotl.in/bcmPoFfra
  */
 
 enum class Drink {
@@ -57,4 +58,7 @@ fun main() {
         .withTitle("Standard breakfast")
         .withDrink(Drink.TEA)
         .build()
+
+    println(breakfastFromInstance)
+    println(breakfastStepByStep)
 }

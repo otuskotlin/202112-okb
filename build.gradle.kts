@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "1.6.10"
+    kotlin("jvm") apply false
 }
 
 group = "ru.otus.okb.first"
@@ -9,8 +9,3 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    implementation(kotlin("stdlib"))
-
-    testImplementation(kotlin("test-junit"))
-}

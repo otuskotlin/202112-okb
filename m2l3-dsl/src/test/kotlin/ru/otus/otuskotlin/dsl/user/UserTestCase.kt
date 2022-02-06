@@ -2,6 +2,7 @@ package ru.otus.otuskotlin.dsl.user
 
 import junit.framework.TestCase.assertEquals
 import org.junit.Test
+import ru.otus.otuskotlin.dsl.user.dsl.user
 import ru.otus.otuskotlin.dsl.user.dsl.contacts
 import ru.otus.otuskotlin.dsl.user.dsl.user
 import ru.otus.otuskotlin.dsl.user.models.Action

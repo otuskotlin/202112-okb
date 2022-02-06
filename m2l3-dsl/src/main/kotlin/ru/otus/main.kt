@@ -1,4 +1,4 @@
-package ru.otus.okb.first
+package ru.otus
 
 fun main() {
     println("Hello World!")

@@ -1,4 +1,4 @@
-package ru.otus.okb.first.ru.otus.otuskotlin.dsl
+package ru.otus.otuskotlin.dsl
 
 // Inner lambdas
 // All in once - https://pl.kotl.in/3GcAl1Sj2

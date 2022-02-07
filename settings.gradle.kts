@@ -6,3 +6,4 @@ pluginManagement {
         kotlin("jvm") version "1.6.10"
     }
 }
+include("m2l4-practice-dsl")

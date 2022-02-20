@@ -4,6 +4,7 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
+import java.util.concurrent.Executors
 import kotlin.test.assertEquals
 
 @OptIn(ExperimentalCoroutinesApi::class)
@@ -47,28 +48,49 @@ class HomeworkExample {
     }
 
     @Test
-    fun flowBlocking() = runTest {
+    fun flowDelayed() = runTest {
         val us = UserSessions()
 
         val userFlow = (1..25000)
             .asFlow()
             .filter { it % 3 == 0 }
             .map {
-                println("map: ${Thread.currentThread().id}")
                 async() {
-                    withContext(Dispatchers.IO) {
-                        println("async: ${Thread.currentThread().id}")
-                        Thread.sleep(3000)
-                        val u = UserAdminSession("admin-$it")
-                        println("thread: ${Thread.currentThread().id} - done")
-                        u
-                    }
+                    delay(3000)
+                    UserAdminSession("admin-$it")
                 }
             }
             .buffer(30)
-//            .flowOn(Dispatchers.IO)
             .drop(8)
             .take(5)
+            .map { it.await() }
+
+        us.addAll(userFlow)
+        assertEquals(5, us.sessions.size)
+    }
+
+    @Test
+    fun flowBlocking() = runTest {
+        val us = UserSessions()
+        val blockedContext = Dispatchers.IO + CoroutineName("blocking") + Job()
+
+        val userFlow = (1..25000)
+            .asFlow()
+            .buffer(30)
+            .filter { it % 3 == 0 }
+            .map {
+                println("map($it): ${Thread.currentThread().name}")
+                async(blockedContext) {
+                    println("async($it): ${Thread.currentThread().name}")
+                    Thread.sleep(3000)
+                    val u = UserAdminSession("admin-$it")
+                    println("thread($it): ${Thread.currentThread().name} - done")
+                    u
+                }
+            }
+            .drop(8)
+            .take(5)
+            .buffer(5) // В буфере происходит ожидание результата
             .map { it.await() }
 
         us.addAll(userFlow)

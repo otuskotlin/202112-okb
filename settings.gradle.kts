@@ -7,3 +7,4 @@ pluginManagement {
     }
 }
 include("m2l4-practice-dsl")
+include("m3l4-practice-concurrent")

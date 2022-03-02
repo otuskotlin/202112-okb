@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
+
 plugins {
     kotlin("js")
 }
@@ -16,9 +18,6 @@ kotlin {
         useCommonJs()
         binaries.executable()
         browser {
-            webpackTask {
-                outputFileName = "main.js"
-            }
             testTask {
                 useKarma {
                     useChromeHeadless()

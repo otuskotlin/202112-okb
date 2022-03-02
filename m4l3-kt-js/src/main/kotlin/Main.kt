@@ -1,10 +1,7 @@
 import kotlinx.browser.document
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.update
-import kotlinx.coroutines.launch
 import kotlinx.html.InputType
 import kotlinx.html.div
 import kotlinx.html.dom.append
@@ -16,9 +13,9 @@ import org.w3c.dom.HTMLInputElement
 import kotlin.coroutines.CoroutineContext
 
 fun main() {
- document.addEventListener("DOMContentLoaded", {
-     Application().start()
- })
+    MainScope().promise {
+        Application().start()
+    }
 }
 
 class Application: CoroutineScope {

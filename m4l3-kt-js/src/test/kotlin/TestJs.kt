@@ -3,8 +3,11 @@ import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.await
 import kotlinx.coroutines.promise
 import kotlin.js.Promise
+import kotlin.reflect.KClass
+import kotlin.reflect.typeOf
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 
 internal class TestJs {
 
@@ -40,7 +43,7 @@ internal class TestJs {
             return greeting.helloWithDelay();
         """
         )
-        assertEquals("Hello, Otus", (result as? Promise<String>)?.await())
+        assertTrue { result is Promise<String> }
     }
 
 

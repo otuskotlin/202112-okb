@@ -16,8 +16,8 @@ kotlin {
         useCommonJs()
         binaries.executable()
         browser {
-            commonWebpackConfig {
-
+            webpackTask {
+                outputFileName = "main.js"
             }
             testTask {
                 useKarma {
@@ -25,7 +25,6 @@ kotlin {
                 }
             }
         }
-
         nodejs()
     }
 }
@@ -33,7 +32,6 @@ kotlin {
 dependencies {
     implementation(npm("array-sort", "1.0.0"))
     implementation(npm("decamelize", "4.0.0"))
-    implementation(devNpm("html-webpack-plugin", "5.3.1"))
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
     implementation("org.jetbrains.kotlinx:kotlinx-html-js:0.7.2")
 

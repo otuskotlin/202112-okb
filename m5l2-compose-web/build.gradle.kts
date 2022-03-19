@@ -17,6 +17,9 @@ repositories {
 kotlin {
     js(IR) {
         browser {
+            runTask {
+                devServer = devServer?.copy(port = 4200)
+            }
             testTask {
                 testLogging.showStandardStreams = true
                 useKarma {

@@ -4,11 +4,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import kotlinx.browser.window
+import kotlinx.browser.document
 import models.CatModel
 import org.jetbrains.compose.web.attributes.*
-import org.jetbrains.compose.web.css.flexWrap
 import org.jetbrains.compose.web.dom.*
+import org.w3c.dom.HTMLFormElement
+import org.w3c.dom.HTMLInputElement
+import org.w3c.dom.get
+import org.w3c.xhr.XMLHttpRequest
 import repository.ICatRepository
 import style.AppStyle
 import kotlin.random.Random
@@ -28,13 +31,14 @@ fun AddCatInput(
     Div({
         classes(AppStyle.addCardDiv)
     }) {
-//        Form(action = "http://localhost:8080/cats/add", attrs = {
-//            method(FormMethod.Post)
-//        }){
+        Form(action = "http://localhost:8080/cats/add", attrs = {
+            method(FormMethod.Post)
+        }){
             CatInputRow(catName, "Name: ", name = "name")
-            CatInputRow(catAge, "Age in months: ", name = "age")
-            CatInputRow(catImage, "URL of image: ", name = "image")
+            CatInputRow(catAge, "Age in months: ", name = "ageMonth")
+            CatInputRow(catImage, "URL of image: ", name = "imgSrc")
             Button({
+                type(ButtonType.Button)
                 onClick {
                     val cat = CatModel(
                         id = Random.nextLong().toString(),
@@ -43,14 +47,15 @@ fun AddCatInput(
                         imgSrc = catImage.value,
                     )
                     repository.add(cat)
+                    (document.getElementById("form_add") as HTMLFormElement).reset()
                 }
             }) {
                 Text("Add")
             }
-//            Input(type = InputType.Submit) {
-//                value("Submit")
-//            }
-//        }
+            Input(type = InputType.Submit) {
+                value("Submit")
+            }
+        }
     }
 }
 

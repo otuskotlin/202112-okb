@@ -1,10 +1,9 @@
 package style
 
 import org.jetbrains.compose.web.css.*
-import org.jetbrains.compose.web.css.keywords.CSSAutoKeyword
-import org.jetbrains.compose.web.css.keywords.auto
 
 object AppStyle: StyleSheet() {
+        // Здесь описываются стили,  применимые ко всему документу или определенным тегам
         init {
             "*" style {
                 color(Color("Coral")) // Применяется ко всем элементам
@@ -19,6 +18,8 @@ object AppStyle: StyleSheet() {
                 margin(10.px, 0.px, 20.px, 30.px)
             }
         }
+
+        // Далее описывается стии для определенных классов
 
         val mainCardDiv by style {
             border {

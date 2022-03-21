@@ -33,10 +33,13 @@ fun AddCatInput(
     }) {
         Form(action = "http://localhost:8080/cats/add", attrs = {
             method(FormMethod.Post)
+            id("form_add")
         }){
+            // Поля ввода однотипные, можно вынести в отдельную функцию
             CatInputRow(catName, "Name: ", name = "name")
             CatInputRow(catAge, "Age in months: ", name = "ageMonth")
             CatInputRow(catImage, "URL of image: ", name = "imgSrc")
+            // Кнопка для отправки нового кота через репозиторий
             Button({
                 type(ButtonType.Button)
                 onClick {
@@ -52,6 +55,7 @@ fun AddCatInput(
             }) {
                 Text("Add")
             }
+            // кнопка для отправки POST-запроса с данными формы
             Input(type = InputType.Submit) {
                 value("Submit")
             }

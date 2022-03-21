@@ -15,6 +15,7 @@ fun CatCard(cat: CatModel, imgSrc: MutableState<String>) {
             src = cat.imgSrc,
             attrs = {
                 classes(AppStyle.cardImage)
+                // При нажатии на изображение передаем ссылку на полное изображение
                 onClick {
                     imgSrc.value = cat.imgSrc
                 }

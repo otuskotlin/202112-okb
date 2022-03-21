@@ -5,6 +5,10 @@ import androidx.compose.runtime.toMutableStateMap
 import models.CatModel
 import kotlin.random.Random
 
+/**
+ * Стабовый репозиторий, инициализированный стабовым списком котов
+ * Позволяет добавлять и удалять котов из словаря, возвращать список
+ */
 class CatRepositoryStub: ICatRepository {
     private val cache = StubConstants.cats.map {
         val id = Random.nextLong().toString()
